@@ -1,3 +1,5 @@
+<%= render 'list', book: @book, user: User.find(current_user.id) %>
+
 <% @users.each do |user| %>
   <div>
 
