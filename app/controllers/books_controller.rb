@@ -12,8 +12,9 @@ def create
     redirect_to book_path(@book.id)
 
   else
-    render :index
-   end
+     @books = Book.all
+   render :index
+ end
 end
 
 
@@ -24,6 +25,7 @@ end
   end
 
   def show
+    @newbook = Book.new
     @book = Book.find(params[:id])
   end
 
