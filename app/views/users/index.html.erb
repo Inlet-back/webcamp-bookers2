@@ -1,11 +1,14 @@
 <%= render 'list', book: @book, user: User.find(current_user.id) %>
 
+<h1>Users</h1>
+<td>image</td>
+<td>name</td>
 <% @users.each do |user| %>
   <div>
 
-    <p>ユーザー画像：<%= link_to user_path(user.id) do %><%= image_tag user.get_profile_image(100,100) %>    <% end %></p>
-    <p>ユーザーネーム：<%= user.name %></p>
-    <p>紹介文：<%= user.introduction %></p>
+    <%= link_to user_path(user.id) do %><%= image_tag user.get_profile_image(100,100) %><% end %>
+     <%= user.name %>
+    <%= link_to 'Show',user_path(user.id) %>
 
   </div>
 <% end %>
