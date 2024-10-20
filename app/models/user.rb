@@ -9,6 +9,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
 
   def get_profile_image(width,height)
     unless profile_image.attached?
