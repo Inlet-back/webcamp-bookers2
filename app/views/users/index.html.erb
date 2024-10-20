@@ -1,2 +1,9 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% @users.each do |user| %>
+  <div>
+
+    <p>ユーザー画像：<%= link_to user_path(user.id) do %><%= image_tag user.get_profile_image(100,100) %>    <% end %></p>
+    <p>ユーザーネーム：<%= user.name %></p>
+    <p>紹介文：<%= user.introduction %></p>
+
+  </div>
+<% end %>
