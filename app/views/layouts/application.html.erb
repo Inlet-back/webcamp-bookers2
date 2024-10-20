@@ -42,7 +42,9 @@
         <%= link_to "Log in", new_user_session_path %>
     <% end %>
   </header>
-
+  <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
