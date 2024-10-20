@@ -1,4 +1,8 @@
+
 <%= render 'list', book: @book, user: User.find(current_user.id) %>
+  <h1>Books</h1>
+  <th>Title</th>
+    <th>Opinion</th>
 <% @books.each do |post_image| %>
   <div>
    <p><%= image_tag post_image.user.get_profile_image(100,100) %></p>
