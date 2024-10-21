@@ -1,18 +1,31 @@
-<!-- ユーザーの詳細 -->
+<div class="container">
+  <div class="row">
 <%= render 'list', book: @book, user: @user %>
 
 
 <!-- ユーザーの投稿一覧 -->
 
-<% @books.each do |book| %>
-<div>
-  <%= link_to user_path(@user.id) do %>
-   <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
+<div class="col-md-8 offset-md-1">
+    <% @books.each do |book| %>
+      <div class="row mb-3">
+         <div class="col-md-3">
+          <%= link_to user_path(@user.id) do %>
+           <%= image_tag book.user.get_profile_image(100,100) %>
+            <% end %>
+             </div>
+         <div class="col-md-3">
+          <%= link_to book_path(book.id) do %>
+         title：<%= book.title %>
+          <% end %>
+          </div> 
+        <div class="col-md-3">
+         説明：<%= book.body %>
+         </div> 
+        <div class="col-md-3">
+          ユーザーネーム：<%= book.user.name %>
+        </div>
+     </div>
     <% end %>
-  <%= link_to book_path(book.id) do %>
-    <p>title：<%= book.title %></p>
-  <% end %>
-  <p>説明：<%= book.body %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
+  </div>
+ </div>
 </div>
-<% end %>

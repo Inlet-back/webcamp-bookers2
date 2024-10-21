@@ -1,4 +1,5 @@
-
+<div class="container">
+  <div class="row">
 <% if @book.errors.any? %>
   <%= @book.errors.count %>件のエラーが発生しました
   <ul>
@@ -7,18 +8,29 @@
     <% end %>
   </ul>
 <% end %>
-<%= render 'list', book: @book, user: User.find(current_user.id) %>
-  <h1>Books</h1>
-  <th>Title</th>
-    <th>Opinion</th>
-<% @books.each do |post_image| %>
-  <div>
-     <%= link_to user_path(post_image.user.id) do %>
-   <p><%= image_tag post_image.user.get_profile_image(100,100) %></p>
-    <% end %>
-  <%= link_to book_path(post_image.id) do %>
-    <p><%= post_image.title %></p>
-  <% end %>
-    <p><%= post_image.body%></p>
 
-<% end %>
+  <%= render 'list', book: @book, user: User.find(current_user.id) %>
+  <div class="col-md-8 offset-md-1">
+    <h1>Books</h1>
+    <th>Title</th>
+      <th>Opinion</th>
+  <% @books.each do |post_image| %>
+   <div class="row mb-3">
+    <div class="col-md-3">
+       <%= link_to user_path(post_image.user.id) do %>
+     <p><%= image_tag post_image.user.get_profile_image(100,100) %></p>
+      <% end %>
+     </div>
+  <div class="col-md-3">
+    <%= link_to book_path(post_image.id) do %>
+      <p><%= post_image.title %></p>
+    <% end %>
+      </div>
+    <div class="col-md-3">
+      <p><%= post_image.body%></p>
+     </div>
+  </div>
+
+  <% end %>
+  </div>
+</div>
