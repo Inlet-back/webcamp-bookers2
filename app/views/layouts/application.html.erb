@@ -31,7 +31,7 @@
 
 
         <%= link_to books_path do%>
-            <i class="fa-solid fa-book">Books</i>
+            <i class="fa-solid fa-book-open">Books</i>
           <% end %>
 
 
@@ -53,9 +53,16 @@
         <% end %>
 
 
-        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to new_user_registration_path do %>
 
-        <%= link_to "Log in", new_user_session_path %>
+          <i class="fa-solid fa-user-plus">Sign up</i>
+        <% end %>
+
+
+        <%= link_to new_user_session_path do %>
+          <i class=" fa-solid fa-right-to-bracket">Log in</i>
+        <% end %>
+
     <% end %>
   </header>
   <% flash.each do |message_type, message| %>
