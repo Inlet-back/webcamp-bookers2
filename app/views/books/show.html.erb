@@ -1,12 +1,16 @@
-<%= render 'list', book: @book, user: @book.user%>
+<%= render 'list', book: @newbook, user: @book.user%>
 <h1>Book detail</h1>
 <div>
     <%= link_to book_path(@book.id) do %>
   <p><%= @book.title %>
     <% end %>
     <%= @book.body %></p>
-  <p>投稿ユーザー画像：<%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
+   <%= link_to user_path(@book.user.id) do %>
+   <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+    <% end %>
+  <%= link_to user_path(@book.user.id) do %>
+    <p>ユーザーネーム：<%= @book.user.name %></p>
+   <% end %>
   <% if @book.user == current_user %>
      <p><%= link_to "Edit", edit_book_path(@book) %></p>
     <%= link_to "Destroy", book_path(@book), method: :delete %>

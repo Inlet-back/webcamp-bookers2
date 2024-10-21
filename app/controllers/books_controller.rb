@@ -10,7 +10,11 @@ def create
       # 3. フラッシュメッセージを定義し、詳細画面へリダイレクト
       flash[:notice] = "You have created book successfully."
     redirect_to book_path(@book.id)
-   end
+
+  else
+     @books = Book.all
+   render :index
+ end
 end
 
 
@@ -21,6 +25,7 @@ end
   end
 
   def show
+    @newbook = Book.new
     @book = Book.find(params[:id])
   end
 
@@ -34,6 +39,8 @@ end
     if @book.update(book_params)
        flash[:notice] = "You have updated book successfully."
     redirect_to book_path(@book.id)
+   else
+    render :edit
     end
   end
 

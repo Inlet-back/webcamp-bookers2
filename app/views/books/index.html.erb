@@ -1,11 +1,21 @@
 
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= render 'list', book: @book, user: User.find(current_user.id) %>
   <h1>Books</h1>
   <th>Title</th>
     <th>Opinion</th>
 <% @books.each do |post_image| %>
   <div>
+     <%= link_to user_path(post_image.user.id) do %>
    <p><%= image_tag post_image.user.get_profile_image(100,100) %></p>
+    <% end %>
   <%= link_to book_path(post_image.id) do %>
     <p><%= post_image.title %></p>
   <% end %>
