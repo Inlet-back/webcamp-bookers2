@@ -1,19 +1,37 @@
+<div class="container">
+  <div class="row">
 <%= render 'list', book: @newbook, user: @book.user%>
+  <div class="col-md-8 offset-md-1">
 <h1>Book detail</h1>
-<div>
-    <%= link_to book_path(@book.id) do %>
-  <p><%= @book.title %>
-    <% end %>
-    <%= @book.body %></p>
+
+  <div class="row mb-3">
+    
+  <div class="col-md-3">
+    <p>
    <%= link_to user_path(@book.user.id) do %>
-   <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+   <%= image_tag @book.user.get_profile_image(100,100) %>
     <% end %>
+  </p>
+    <%= link_to book_path(@book.id) do %>
+      <%= @book.title %>
+    <% end %>
+    </div>
+  <div class="col-md-3">
+    <%= @book.body %>
+  </div>
+
+<div class="col-md-3">
   <%= link_to user_path(@book.user.id) do %>
-    <p>ユーザーネーム：<%= @book.user.name %></p>
+    <%= @book.user.name %>
    <% end %>
+    </div>
+  <div class="col-md-3">
   <% if @book.user == current_user %>
-     <p><%= link_to "Edit", edit_book_path(@book) %></p>
+    <%= link_to "Edit", edit_book_path(@book) %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
+      </div>
+       </div>
   <% end %>
 
+  </div>
 </div>
