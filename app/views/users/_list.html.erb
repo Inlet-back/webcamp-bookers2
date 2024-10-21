@@ -1,23 +1,17 @@
-<div>
-  <div class="container">
-  <div class="row">
+
     <div class="col-md-3">
    <h1>User info</h1>
   <%= image_tag user.get_profile_image(100,100) %>
    <h3>name <%= user.name %></h3>
    <h3>introduction	 <%= user.introduction	 %></h3>
        <%= link_to "edit",edit_user_path(user)  %>
-       </div>
-  </div>
-</div>
 
 
-</div>
+
+
 
 <!-- 投稿フォーム -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+
       <h1>New book</h1>
 <%= form_with model: book do |f| %>
   <h4>title</h4>
@@ -27,5 +21,5 @@
   <%= f.submit 'Create Book' %>
 <% end %>
    </div>
-  </div>
-</div>
+
+
