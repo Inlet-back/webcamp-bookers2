@@ -3,7 +3,10 @@
 
 
 <!-- ユーザーの投稿一覧 -->
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+         <div class="col-md-8 offset-md-1">
 <% @books.each do |book| %>
 <div>
   <%= link_to user_path(@user.id) do %>
@@ -16,3 +19,7 @@
   <p>ユーザーネーム：<%= book.user.name %></p>
 </div>
 <% end %>
+    </div>
+  </div>
+  </div>
+</div>
