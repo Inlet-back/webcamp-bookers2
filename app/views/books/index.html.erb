@@ -29,6 +29,9 @@
     <div class="col-md-3">
       <p><%= post_image.body%></p>
      </div>
+      <div class="col-md-3">
+            <p><%= link_to "#{post_image.book_comments.count} コメント",book_path(post_image.id) %></p>
+      </div>
   </div>
 
   <% end %>
