@@ -1,31 +1,48 @@
 <div class="container">
   <div class="row">
-<%= render 'list', book: @book, user: @user %>
+    <div class="col-md-3">
+      <%= render 'list', book: @book, user: @user %>
+    </div>
 
-
-<!-- ユーザーの投稿一覧 -->
-
-<div class="col-md-8 offset-md-1">
-    <% @books.each do |book| %>
-      <div class="row mb-3">
-         <div class="col-md-3">
-          <%= link_to user_path(@user.id) do %>
-           <%= image_tag book.user.get_profile_image(100,100) %>
+    <!-- ユーザーの投稿一覧 -->
+    <div class="col-md-8 offset-md-1">
+      <% @books.each do |book| %>
+        <div class="row mb-3">
+          <div class="col-md-3">
+            <%= link_to user_path(book.user.id) do %>
+              <%= image_tag book.user.get_profile_image(100,100) %>
             <% end %>
-             </div>
-         <div class="col-md-3">
-          <%= link_to book_path(book.id) do %>
-         title：<%= book.title %>
-          <% end %>
-          </div> 
-        <div class="col-md-3">
-         説明：<%= book.body %>
-         </div> 
-        <div class="col-md-3">
-          ユーザーネーム：<%= book.user.name %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to book_path(book.id) do %>
+              <%= book.title %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+            <%= book.body %>
+          </div>
+          <div class="col-md-2">
+            <%= book.user.name %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
+          </div>
+          <div class="col-md-1">
+            <% if book.favorited_by?(current_user) %>
+              <%= link_to book_favorite_path(book), method: :delete do %>
+               <i class="fa-solid fa-heart"></i>
+                <%= book.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to book_favorite_path(book), method: :post do %>
+              <i class="fa-regular fa-heart"></i>
+              
+                <%= book.favorites.count %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-     </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
- </div>
 </div>
