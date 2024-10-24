@@ -17,13 +17,17 @@
           <%= link_to book_path(book.id) do %>
          title：<%= book.title %>
           <% end %>
-          </div> 
+          </div>
         <div class="col-md-3">
          説明：<%= book.body %>
-         </div> 
+         </div>
         <div class="col-md-3">
           ユーザーネーム：<%= book.user.name %>
         </div>
+       <div class="col-md-3">
+        <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
+       </div>
+  </div>
      </div>
     <% end %>
   </div>
