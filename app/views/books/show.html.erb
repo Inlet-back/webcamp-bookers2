@@ -7,16 +7,16 @@
   <div class="row mb-3">
 
   <div class="col-md-3">
-    <p>
+
    <%= link_to user_path(@book.user.id) do %>
-   <%= image_tag @book.user.get_profile_image(100,100) %>
-    <% end %>
-  </p>
+     <%= image_tag @book.user.get_profile_image(100,100) %>
+      <% end %>
+
     <%= link_to book_path(@book.id) do %>
       <%= @book.title %>
     <% end %>
     </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <%= @book.body %>
   </div>
 
@@ -43,7 +43,6 @@
 
         <%= link_to book_favorite_path(@book), method: :post do %>
           ♡<%= @book.favorites.count %>
-
         <% end %>
 
               </div>
